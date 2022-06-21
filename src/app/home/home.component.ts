@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 
 @Component({
@@ -6,15 +6,12 @@ import {HttpClient} from "@angular/common/http";
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
   name: string = "";
   password: string = "";
 
   constructor(private httpService: HttpClient) {
 
-  }
-
-  ngOnInit(): void {
   }
 
   onClickButton() {
