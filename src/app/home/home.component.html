@@ -1,0 +1,22 @@
+<html>
+<head>
+  <title>Login</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<h1 id="heading1">Login</h1>
+<div>
+  <form action="" class="myForm" name="myForm">
+    <div class="input-container">
+      <i class="fa fa-envelope icon"></i>
+      <input type="name" placeholder="Name" name="name" class="input-field" required [(ngModel)]="name">
+    </div>
+    <div class="input-container">
+      <i class="fa fa-key icon"></i>
+      <input type="password" placeholder="Password" name="password" class="input-field"  required [(ngModel)]="password">
+    </div>
+    <div><input type="submit" value="Login" class="bttn" (click)="onClickButton()"></div>
+  </form>
+</div>
+</body>
+</html>
