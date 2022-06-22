@@ -1,10 +1,10 @@
 <html>
 <head>
-  <title>Login</title>
+  <title>Register</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-<h1 id="heading1">Login</h1>
+<h1 id="heading1">Register</h1>
 <div>
   <form action="" class="myForm" name="myForm">
     <div class="input-container">
@@ -15,7 +15,9 @@
       <i class="fa fa-key icon"></i>
       <input type="password" placeholder="Password" name="password" class="input-field"  required [(ngModel)]="password">
     </div>
-    <div><input type="submit" value="Login" class="bttn" (click)="onClickButton()"></div>
+    <div><input type="submit" value="Register" class="bttn" (click)="onClickButton()">
+      <input type="button" value="Go Login" class="bttn" (click)="directToLogin()"></div>
+
   </form>
 </div>
 </body>

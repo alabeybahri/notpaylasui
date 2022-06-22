@@ -1,16 +1,17 @@
 import {Component} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
 })
-export class HomeComponent {
+export class LoginComponent {
   name: string = "";
   password: string = "";
 
-  constructor(private httpService: HttpClient) {
+  constructor(private httpService: HttpClient, private router: Router) {
 
   }
 
@@ -29,5 +30,9 @@ export class HomeComponent {
     ).subscribe(data => {
       console.log({data});
     });
+  }
+
+  directToRegister() {
+    this.router.navigateByUrl("/register").then();
   }
 }
