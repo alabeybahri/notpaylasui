@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
     ).subscribe(data => {
       console.log({data});
     });
-
+    this.directToLogin();
   }
 
   directToLogin() {

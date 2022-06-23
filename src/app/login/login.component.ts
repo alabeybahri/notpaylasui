@@ -22,17 +22,29 @@ export class LoginComponent {
     // this.httpService.post<any>('http://localhost:5039/api/Login?data=' + this.name, undefined).subscribe(data => {
     //   console.log({data});
     // });
-    this.httpService.post<any>('http://localhost:5039/api/Login',
+    this.httpService.post('http://localhost:5039/api/Auth/Login',
       {
         UserName: this.name,
         Password: this.password
+      },
+      { responseType: 'text' }
+    ).subscribe((data) => {
+      if (data) {
+        sessionStorage.setItem('token', data);
+        this.directToPage();
+
       }
-    ).subscribe(data => {
-      console.log({data});
+    }, error => {
+      console.error(error)
+    }, () => {
+      console.log('login completed');
     });
   }
 
   directToRegister() {
     this.router.navigateByUrl("/register").then();
+  }
+  directToPage() {
+    this.router.navigateByUrl("/page").then();
   }
 }
