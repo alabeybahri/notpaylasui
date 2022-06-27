@@ -27,9 +27,7 @@ export class RegisterComponent implements OnInit {
     });
     this.directToLogin();
   }
-
   directToLogin() {
     this.router.navigateByUrl("/login").then();
-
   }
 }

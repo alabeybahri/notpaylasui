@@ -16,12 +16,6 @@ export class LoginComponent {
   }
 
   onClickButton() {
-    // this.httpService.get('http://localhost:5039/api/Login').subscribe(data => {
-    //   console.log({data});
-    // });
-    // this.httpService.post<any>('http://localhost:5039/api/Login?data=' + this.name, undefined).subscribe(data => {
-    //   console.log({data});
-    // });
     this.httpService.post('http://localhost:5039/api/Auth/Login',
       {
         UserName: this.name,

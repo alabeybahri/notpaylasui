@@ -8,6 +8,7 @@ import {FormsModule} from "@angular/forms";
 import { RegisterComponent } from './register/register.component';
 import { PageComponent } from './page/page.component';
 import {InterceptorService} from "./interceptor.service";
+import { AddNoteComponent } from './add-note/add-note.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import {InterceptorService} from "./interceptor.service";
     LoginComponent,
     RegisterComponent,
     PageComponent,
+    AddNoteComponent,
   ],
     imports: [
         BrowserModule,
