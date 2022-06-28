@@ -9,6 +9,7 @@ import { RegisterComponent } from './register/register.component';
 import { PageComponent } from './page/page.component';
 import {InterceptorService} from "./interceptor.service";
 import { AddNoteComponent } from './add-note/add-note.component';
+import { AddCategoryComponent } from './add-category/add-category.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { AddNoteComponent } from './add-note/add-note.component';
     RegisterComponent,
     PageComponent,
     AddNoteComponent,
+    AddCategoryComponent,
   ],
     imports: [
         BrowserModule,

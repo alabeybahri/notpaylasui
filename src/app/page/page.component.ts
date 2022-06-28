@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-page',
@@ -9,7 +10,7 @@ import {HttpClient} from "@angular/common/http";
 export class PageComponent implements OnInit {
 
 
-  constructor(private httpService: HttpClient) {
+  constructor(private httpService: HttpClient,private router: Router) {
   }
 
   ngOnInit(): void {
@@ -26,13 +27,11 @@ export class PageComponent implements OnInit {
 
   }
 
+  directToAddNote() {
+    this.router.navigateByUrl("/addnote").then();
+  }
 
-  denemeRequest() {
-    this.httpService.get('http://localhost:5039/api/Auth/deneme',
-      {responseType: 'text' }
-    ).subscribe(data => {
-      console.log({data});
-    });
-
+  directToAddCategory() {
+    this.router.navigateByUrl("/addcategory").then();
   }
 }

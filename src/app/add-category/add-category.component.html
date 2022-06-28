@@ -1,0 +1,30 @@
+<p>add-category works!</p>
+<head>
+  <title>
+    AddCategory Page
+  </title>
+</head>
+<body>
+<br>
+<br>
+<form>
+
+  <label> Name: </label>
+  <input required [(ngModel)]="Name" [ngModelOptions]="{standalone: true}" type="text" name="Name" size="15"/> <br>
+
+
+  <br>
+  <br>
+
+  Description
+  <br>
+  <textarea [(ngModel)]="Description" [ngModelOptions]="{standalone: true}" rows="8" cols="50"></textarea>
+
+  <br> <br>
+  <br> <br>
+  <br> <br>
+
+</form>
+<input required (click)="SubmitForm()" type="submit" value="Submit">
+
+</body>

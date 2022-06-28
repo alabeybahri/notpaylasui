@@ -1,3 +1,38 @@
-<p>add-note works!</p>
-<input type="title" placeholder="Title" name="Title" class="input-field" required [(ngModel)]="Title">
+<head>
+  <title>
+    AddNote Page
+  </title>
+</head>
+<body>
+<br>
+<br>
+<form>
 
+  <label> Title: </label>
+  <input required [(ngModel)]="Title" [ngModelOptions]="{standalone: true}" type="text" name="Title" size="15"/> <br>
+  <br>
+  <label> Category: </label>
+
+  <select [required] name="categories" id="categories" (change)="OnCategoryChange($event)">
+    <option hidden disabled selected value="value"> -- select an option -- </option>
+    <option *ngFor="let category of Categories"
+            [value]="category.id">
+      {{category.name}}
+    </option>
+  </select>
+
+  <br>
+  <br>
+
+  Note
+  <br>
+  <textarea [(ngModel)]="NoteValue" [ngModelOptions]="{standalone: true}" rows="8" cols="50"></textarea>
+
+  <br> <br>
+  <br> <br>
+  <br> <br>
+
+</form>
+<input required (click)="SubmitForm()" type="submit" value="Submit">
+
+</body>

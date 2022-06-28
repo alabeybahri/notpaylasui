@@ -18,8 +18,8 @@ export class LoginComponent {
   onClickButton() {
     this.httpService.post('http://localhost:5039/api/Auth/Login',
       {
-        UserName: this.name,
-        Password: this.password
+        username: this.name,
+        password: this.password
       },
       { responseType: 'text' }
     ).subscribe((data) => {
