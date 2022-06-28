@@ -5,6 +5,7 @@ import {RegisterComponent} from "./register/register.component";
 import {PageComponent} from "./page/page.component";
 import {AddNoteComponent} from "./add-note/add-note.component";
 import {AddCategoryComponent} from "./add-category/add-category.component";
+import {NotesComponent} from "./notes/notes.component";
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'page', component: PageComponent },
   { path: 'addnote', component: AddNoteComponent },
   { path: 'addcategory', component: AddCategoryComponent },
+  { path: 'notes', component: NotesComponent },
   { path: '**', component: LoginComponent }
 ];
 

@@ -15,7 +15,7 @@ export class AddNoteComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.httpService.get<any[]>('http://localhost:5039/api/Data').subscribe((data) => {
+    this.httpService.get<any[]>('http://localhost:5039/api/Data/categories').subscribe((data) => {
       if (data) {
         this.Categories = data;
         console.log(data)

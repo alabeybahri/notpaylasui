@@ -10,6 +10,7 @@ import { PageComponent } from './page/page.component';
 import {InterceptorService} from "./interceptor.service";
 import { AddNoteComponent } from './add-note/add-note.component';
 import { AddCategoryComponent } from './add-category/add-category.component';
+import { NotesComponent } from './notes/notes.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { AddCategoryComponent } from './add-category/add-category.component';
     PageComponent,
     AddNoteComponent,
     AddCategoryComponent,
+    NotesComponent,
   ],
     imports: [
         BrowserModule,
