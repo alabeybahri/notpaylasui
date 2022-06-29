@@ -11,6 +11,7 @@ import {InterceptorService} from "./interceptor.service";
 import { AddNoteComponent } from './add-note/add-note.component';
 import { AddCategoryComponent } from './add-category/add-category.component';
 import { NotesComponent } from './notes/notes.component';
+import { CategorySearchPipe } from './category-search.pipe';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { NotesComponent } from './notes/notes.component';
     AddNoteComponent,
     AddCategoryComponent,
     NotesComponent,
+    CategorySearchPipe,
   ],
     imports: [
         BrowserModule,

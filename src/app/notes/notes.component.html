@@ -1,0 +1,14 @@
+<div class="row" *ngIf="Notes&&Notes.length>0">
+  <div class="column">
+    <table>
+      <tr>
+        <th>Title</th>
+        <th>Value</th>
+      </tr>
+      <tr *ngFor="let note of Notes">
+        <td>{{note.title}}</td>
+        <td>{{note.noteValue}}</td>
+      </tr>
+    </table>
+  </div>
+</div>
