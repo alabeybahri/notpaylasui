@@ -8,15 +8,26 @@ import {Router} from "@angular/router";
   styleUrls: ['./page.component.scss']
 })
 export class PageComponent implements OnInit {
+  public Categories: any[] = [];
+
 
 
   constructor(private httpService: HttpClient,private router: Router) {
   }
 
   ngOnInit(): void {
+    this.httpService.get<any[]>('http://localhost:5039/api/Data/categories').subscribe((data) => {
+      if (data) {
+        this.Categories = data;
+        console.log(data)
+      }
+    }, error => {
+      console.log(error)
+    })
 
 
   }
+
 
   customRequest() {
     this.httpService.get<any>('http://localhost:5039/api/Data',
