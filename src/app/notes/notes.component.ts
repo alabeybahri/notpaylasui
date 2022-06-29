@@ -1,11 +1,12 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {DTONote} from "../../models/DTONote";
 
 @Component({
   selector: 'app-notes', templateUrl: './notes.component.html', styleUrls: ['./notes.component.scss']
 })
 export class NotesComponent implements OnInit {
-  public Notes: any[] = [];
+  public Notes: DTONote[] = [];
   private _categoryID: string = "";
 
   constructor(private httpService: HttpClient) {
@@ -30,7 +31,7 @@ export class NotesComponent implements OnInit {
 
   public getNotesByCategoryID(categoryID: string) {
     if (categoryID) {
-      this.httpService.get<any[]>('http://localhost:5039/api/Note/bycategoryID?categoryID=' + categoryID)
+      this.httpService.get<DTONote[]>('http://localhost:5039/api/Note/bycategoryID?categoryID=' + categoryID)
         .subscribe((data) => {
           if (data) {
             this.Notes = data;

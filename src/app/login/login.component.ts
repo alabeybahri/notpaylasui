@@ -26,12 +26,9 @@ export class LoginComponent {
       if (data) {
         sessionStorage.setItem('token', data);
         this.directToPage();
-
       }
     }, error => {
       console.error(error)
-    }, () => {
-      console.log('login completed');
     });
   }
 

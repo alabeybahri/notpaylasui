@@ -1,4 +1,4 @@
-export class DTOCategory {
-  name: string = "";
-  description: string = "";
+export interface DTOCategory {
+  name: string;
+  description: string;
 }

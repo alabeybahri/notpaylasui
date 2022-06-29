@@ -21,12 +21,7 @@ export class AddCategoryComponent implements OnInit {
       Name : this.Name,
       Description : this.Description
     }, ).subscribe((data) => {
-      if(data){
-        console.log("created category")
-      }
-      else{
-        console.log("not succesful")
-      }
+      if(data){}
     }
 
     ) }
