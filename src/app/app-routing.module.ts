@@ -6,6 +6,8 @@ import {PageComponent} from "./page/page.component";
 import {AddNoteComponent} from "./add-note/add-note.component";
 import {AddCategoryComponent} from "./add-category/add-category.component";
 import {NotesComponent} from "./notes/notes.component";
+import {AddRatingComponent} from "./add-rating/add-rating.component";
+import {NoteComponent} from "./note/note.component";
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -14,6 +16,8 @@ const routes: Routes = [
   { path: 'addnote', component: AddNoteComponent },
   { path: 'addcategory', component: AddCategoryComponent },
   { path: 'notes', component: NotesComponent },
+  { path: 'addrating', component: AddRatingComponent },
+  { path: 'note/:id', component: NoteComponent },
   { path: '**', component: LoginComponent }
 ];
 

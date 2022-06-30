@@ -15,7 +15,7 @@ export class PageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.httpService.get<DTOCategory[]>('http://localhost:5039/api/Data/categories').subscribe((data) => {
+    this.httpService.get<DTOCategory[]>('http://localhost:5039/api/Category/all').subscribe((data) => {
       if (data) {
         this.Categories = data;
         console.log(data)

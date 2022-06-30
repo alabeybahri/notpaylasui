@@ -12,6 +12,8 @@ import { AddNoteComponent } from './add-note/add-note.component';
 import { AddCategoryComponent } from './add-category/add-category.component';
 import { NotesComponent } from './notes/notes.component';
 import { CategorySearchPipe } from './category-search.pipe';
+import { AddRatingComponent } from './add-rating/add-rating.component';
+import { NoteComponent } from './note/note.component';
 
 
 @NgModule({
@@ -24,6 +26,8 @@ import { CategorySearchPipe } from './category-search.pipe';
     AddCategoryComponent,
     NotesComponent,
     CategorySearchPipe,
+    AddRatingComponent,
+    NoteComponent,
   ],
     imports: [
         BrowserModule,

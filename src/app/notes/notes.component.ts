@@ -8,7 +8,7 @@ import {DTONote} from "../../models/DTONote";
 export class NotesComponent implements OnInit {
   public Notes: DTONote[] = [];
   private _categoryID: string = "";
-
+  public NoteID: number = 0;
   constructor(private httpService: HttpClient) {
   }
 
@@ -42,5 +42,4 @@ export class NotesComponent implements OnInit {
         });
     }
   }
-
 }

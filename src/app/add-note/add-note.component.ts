@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Router} from "@angular/router";
 import {DTOCategory} from "../../models/DTOCategory";
 
 @Component({
@@ -12,7 +11,7 @@ export class AddNoteComponent implements OnInit {
   public NoteValue: string = "";
   public Category: number = 0;
 
-  constructor(private httpService: HttpClient,private router: Router) {
+  constructor(private httpService: HttpClient) {
   }
 
   ngOnInit(): void {
@@ -31,7 +30,7 @@ export class AddNoteComponent implements OnInit {
 
   SubmitForm() {
 
-    this.httpService.post('http://localhost:5039/api/Auth/AddNote', {
+    this.httpService.post('http://localhost:5039/api/Note/addnote', {
       Title: this.Title,
       NoteValue: this.NoteValue,
       Category: this.Category
