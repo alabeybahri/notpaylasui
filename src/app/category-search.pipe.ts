@@ -10,7 +10,7 @@ export class CategorySearchPipe implements PipeTransform {
    if (!args) {
      return value;
    } else {
-     return value.filter(c => c.name.includes(args));
+     return value.filter(c => c.name.toLowerCase().includes(args.toLowerCase()));
    }
   }
 

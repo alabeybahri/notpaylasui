@@ -8,7 +8,7 @@ import {DTONote} from "../../models/DTONote";
 export class NotesComponent implements OnInit {
   public Notes: DTONote[] = [];
   public _categoryID: string = "";
-  public NoteID: number = 0;
+  public searchText: string = "";
   constructor(private httpService: HttpClient) {
   }
 
@@ -40,5 +40,10 @@ export class NotesComponent implements OnInit {
           console.log(error)
         });
     }
+  }
+
+  OnSearchTextChanged($event: any) {
+    this.searchText = $event.target.value;
+    console.log(this.searchText)
   }
 }

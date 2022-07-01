@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {NoteProfile} from "../../models/NoteProfile";
+import {formatDate} from "@angular/common";
 
 @Component({
   selector: 'app-note',
@@ -10,6 +11,7 @@ import {NoteProfile} from "../../models/NoteProfile";
 })
 export class NoteComponent implements OnInit {
   public note = {} as NoteProfile;
+  public date : string = "";
   constructor(private route:ActivatedRoute,private httpService:HttpClient) { }
 
   ngOnInit(): void {
@@ -25,12 +27,20 @@ export class NoteComponent implements OnInit {
         .subscribe((data) => {
           if (data) {
             this.note = data;
+            this.removeSeconds();
+            console.log(this.date);
           }
         }, error => {
           console.log(error)
         });
     }
   }
+
+  public removeSeconds(){
+
+    this.date = this.note.createdAt.replace(/T/, " ").replace(/:\b(\d\d)\b.\b(\d\d\d)\b/, "");
+  }
+
   }
 
 

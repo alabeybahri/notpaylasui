@@ -17,7 +17,7 @@ export class AddCategoryComponent implements OnInit {
   }
 
   SubmitForm() {
-    this.httpService.post<boolean>('http://localhost:5039/api/Auth/AddCategory', {
+    this.httpService.post<boolean>('http://localhost:5039/api/Category/create', {
       Name : this.Name,
       Description : this.Description
     }, ).subscribe((data) => {
