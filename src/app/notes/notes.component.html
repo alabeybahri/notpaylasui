@@ -1,14 +1,11 @@
-
-
-<div class="row" *ngIf="Notes&&Notes.length>0" >
-<!--  <app-add-rating [IDNote]="NoteID"></app-add-rating>-->
+<div class="row" *ngIf="Notes&&Notes.length>0">
   <div class="column">
     <table>
       <tr>
         <th>Title</th>
         <th>Value</th>
       </tr>
-      <tr *ngFor="let note of Notes" [routerLink]="['/note', note.id]">
+      <tr *ngFor="let note of Notes" [routerLink]="['/note', note.id]" >
         <td>{{note.title}}</td>
         <td>{{note.noteValue}}</td>
       </tr>

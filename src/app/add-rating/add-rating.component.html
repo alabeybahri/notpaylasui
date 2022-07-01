@@ -1,5 +1,5 @@
 <div class="rating-stars">
-<input type="button" value="AddRating" class="bttn" (click)="onClickButton()">
+<input type="button" value="Submit" class="pressbut" (click)="onClickButton()">
 <div class="rate" >
   <input type="radio" id="star5" name="rate" value=5 (click)="getRatingVal(5)" />
   <label for="star5" title="text">5 stars</label>
@@ -12,5 +12,11 @@
   <input type="radio" id="star1" name="rate" value=1 (click)="getRatingVal(1)"/>
   <label for="star1" title="text">1 star</label>
 </div>
+</div>
+<div *ngIf="DBRating>0">
+  Your Rating = {{DBRating}}/5
+</div>
+<div *ngIf="DBRatingAverage>0">
+  Average Rating = {{DBRatingAverage}}/5
 </div>
 

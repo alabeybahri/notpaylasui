@@ -7,7 +7,7 @@ import {DTONote} from "../../models/DTONote";
 })
 export class NotesComponent implements OnInit {
   public Notes: DTONote[] = [];
-  private _categoryID: string = "";
+  public _categoryID: string = "";
   public NoteID: number = 0;
   constructor(private httpService: HttpClient) {
   }
@@ -35,7 +35,6 @@ export class NotesComponent implements OnInit {
         .subscribe((data) => {
           if (data) {
             this.Notes = data;
-            console.log(data)
           }
         }, error => {
           console.log(error)

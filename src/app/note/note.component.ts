@@ -9,7 +9,6 @@ import {NoteProfile} from "../../models/NoteProfile";
   styleUrls: ['./note.component.scss']
 })
 export class NoteComponent implements OnInit {
-  public title:string = "title"
   public note = {} as NoteProfile;
   constructor(private route:ActivatedRoute,private httpService:HttpClient) { }
 
@@ -19,9 +18,9 @@ export class NoteComponent implements OnInit {
     });
   }
 
+
   public getNoteByID(ID: string) {
     if (ID) {
-      console.log('http://localhost:5039/api/Note/byID?ID=' + ID)
       this.httpService.get<NoteProfile>('http://localhost:5039/api/Note/byID?ID=' + ID)
         .subscribe((data) => {
           if (data) {

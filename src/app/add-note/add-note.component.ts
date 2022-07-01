@@ -18,7 +18,6 @@ export class AddNoteComponent implements OnInit {
     this.httpService.get<DTOCategory[]>('http://localhost:5039/api/Data/categories').subscribe((data) => {
       if (data) {
         this.Categories = data;
-        console.log(data)
       }
     }, error => {
       console.log(error)
@@ -40,7 +39,6 @@ export class AddNoteComponent implements OnInit {
     }, error => {
       console.error(error)
     }, () => {
-      console.log('note add completed');
     });
 
 

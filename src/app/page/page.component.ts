@@ -18,7 +18,6 @@ export class PageComponent implements OnInit {
     this.httpService.get<DTOCategory[]>('http://localhost:5039/api/Category/all').subscribe((data) => {
       if (data) {
         this.Categories = data;
-        console.log(data)
       }
     }, error => {
       console.log(error)
@@ -28,12 +27,6 @@ export class PageComponent implements OnInit {
   }
 
 
-  customRequest() {
-    this.httpService.get<any>('http://localhost:5039/api/Data', {}).subscribe(data => {
-      console.log({data});
-    });
-
-  }
 
   directToAddNote() {
     this.router.navigateByUrl("/addnote").then();
@@ -51,6 +44,5 @@ export class PageComponent implements OnInit {
 
   public OnSearchTextChanged($event: any) {
     this.SearchTextValue = $event.target.value;
-    console.log(this.SearchTextValue);
   }
 }

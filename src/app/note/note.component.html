@@ -1,6 +1,8 @@
 <div class="container" *ngIf="note">
   <h1 >{{ note.title }}</h1>
   <p >{{ note.noteValue }}</p>
-  <app-add-rating [IDNote]="note.iD"></app-add-rating>
+  <p > Created At {{ note.createdAt }}</p>
+  <p > Created By {{ note.name }}</p>
+  <app-add-rating [IDNote]="note.id"></app-add-rating>
 
 </div>

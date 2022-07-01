@@ -1,5 +1,5 @@
 export interface NoteProfile {
-  iD: number;
+  id: number;
   title: string;
   createdAt: string;
   createdBy: number;
@@ -9,4 +9,5 @@ export interface NoteProfile {
   isActive: boolean;
   categoryID: number;
   noteValue: string | null;
+  name: string | null;
 }

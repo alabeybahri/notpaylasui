@@ -23,7 +23,6 @@ export class RegisterComponent implements OnInit {
         Password: this.password
       }
     ).subscribe(data => {
-      console.log({data});
     });
     this.directToLogin();
   }
