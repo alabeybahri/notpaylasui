@@ -18,6 +18,8 @@ import {StarRatingModule} from "angular-star-rating";
 import { NoteSearchPipe } from './note-search.pipe';
 import { NavbarComponent } from './navbar/navbar.component';
 import {AuthGuard} from "./auth.guard";
+import { LoginPageComponent } from './layouts/login-page/login-page.component';
+import { HomePageComponent } from './layouts/home-page/home-page.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import {AuthGuard} from "./auth.guard";
     NoteComponent,
     NoteSearchPipe,
     NavbarComponent,
+    LoginPageComponent,
+    HomePageComponent,
   ],
   imports: [
     BrowserModule,
