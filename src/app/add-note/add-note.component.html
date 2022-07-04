@@ -7,32 +7,26 @@
 <br>
 <br>
 <form>
-
   <label> Title: </label>
   <input required [(ngModel)]="Title" [ngModelOptions]="{standalone: true}" type="text" name="Title" size="15"/> <br>
   <br>
   <label> Category: </label>
-
   <select [required] name="categories" id="categories" (change)="OnCategoryChange($event)">
     <option hidden disabled selected value="value"> -- select an option -- </option>
     <option *ngFor="let category of Categories"
             [value]="category.id">
       {{category.name}}
     </option>
-  </select>
-
-  <br>
-  <br>
-
+  </select><br><br>
   Note
   <br>
-  <textarea [(ngModel)]="NoteValue" [ngModelOptions]="{standalone: true}" rows="8" cols="50"></textarea>
-
-  <br> <br>
-  <br> <br>
-  <br> <br>
+  <textarea [(ngModel)]="NoteValue" [ngModelOptions]="{standalone: true}" rows="8" cols="50"></textarea><br><br>
 
 </form>
 <input required (click)="SubmitForm()" type="submit" value="Submit">
+
+<input id="inputFileToLoad" accept="image/jpeg" type="file" (change)="encodeImageFileAsURL()" />
+<div id="imgTest"></div>
+
 
 </body>
