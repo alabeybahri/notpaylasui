@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
+import {LoginService} from "../login.service";
 
 @Component({
   selector: 'app-login',
@@ -11,11 +12,15 @@ export class LoginComponent {
   name: string = "";
   password: string = "";
 
-  constructor(private httpService: HttpClient, private router: Router) {
+  constructor(private loginService: LoginService,private httpService: HttpClient, private router: Router) {
 
   }
 
+  private setLoggedIn(value: boolean): void {this.loginService.setLoggedIn(value);}
+
+
   onClickButton() {
+    sessionStorage.clear();
     this.httpService.post('http://localhost:5039/api/Auth/Login',
       {
         username: this.name,
@@ -25,6 +30,8 @@ export class LoginComponent {
     ).subscribe((data) => {
       if (data) {
         sessionStorage.setItem('token', data);
+        sessionStorage.setItem('userName',this.name);
+        this.setLoggedIn(true);
         this.directToPage();
       }
     }, error => {

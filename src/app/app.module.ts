@@ -17,8 +17,7 @@ import {NoteComponent} from './note/note.component';
 import {StarRatingModule} from "angular-star-rating";
 import { NoteSearchPipe } from './note-search.pipe';
 import { NavbarComponent } from './navbar/navbar.component';
-import { AuthGuardService} from "./auth-guard.service";
-import { AuthenticationGuard} from "./authentication.guard";
+import {AuthGuard} from "./auth.guard";
 
 @NgModule({
   declarations: [
@@ -40,7 +39,7 @@ import { AuthenticationGuard} from "./authentication.guard";
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    StarRatingModule.forRoot()
+    StarRatingModule.forRoot(),
   ],
   providers: [
     {
@@ -48,8 +47,7 @@ import { AuthenticationGuard} from "./authentication.guard";
       useClass: InterceptorService,
       multi: true,
     },
-    AuthenticationGuard,
-    AuthGuardService
+    AuthGuard,
   ],
   bootstrap: [AppComponent]
 })

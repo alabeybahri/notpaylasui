@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
+import {LoginService} from "../login.service";
 
 @Component({
   selector: 'app-navbar',
@@ -7,18 +7,17 @@ import {Router} from "@angular/router";
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  public userName : string = ""
-  constructor(private router: Router) { }
+  public userName : string | null = sessionStorage.getItem("userName");
+  private setLoggedOut(value: boolean): void {this.loginService.setLoggedIn(value);}
+  constructor(private loginService:LoginService) { }
 
   ngOnInit(): void {
+    this.userName = sessionStorage.getItem("userName")
   }
 
   LogoutEvent() {
-    sessionStorage.clear()
-    // this.directToLoginPage()
+    this.setLoggedOut(false);
+    sessionStorage.clear();
   }
 
-  directToLoginPage(){
-    this.router.navigateByUrl("/#").then();
-  }
 }

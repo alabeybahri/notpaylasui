@@ -1,4 +1,4 @@
-<div>
+<div class="full-notes" *ngIf="Notes&&Notes.length>0">
   <input *ngIf="Notes&&Notes.length>0" type="search" id="form1" class="form-control" placeholder="Search Note" aria-label="Search" (keyup)="OnSearchTextChanged($event)" />
   <div class="row"  *ngIf="Notes&&Notes.length>0">
   <div class="column">

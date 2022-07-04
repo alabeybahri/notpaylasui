@@ -14,9 +14,6 @@
       <li class="nav-item">
         <a class="nav-link" href="addnote">Add Note</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#" (click)="LogoutEvent()" >Logout</a>
-      </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Dropdown
@@ -29,5 +26,11 @@
         </div>
       </li>
     </ul>
+  </div>
+  <div class="name">
+    <a>{{userName}}</a>
+  </div>
+  <div class="nav-logout">
+    <a class="nav-link" href="#" (click)="LogoutEvent()" >Log out</a>
   </div>
 </nav>
