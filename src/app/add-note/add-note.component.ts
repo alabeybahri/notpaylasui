@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {DTOCategory} from "../../models/DTOCategory";
+import {NoteSend} from "../../models/NoteSend";
+
+
 
 @Component({
   selector: 'app-add-note', templateUrl: './add-note.component.html', styleUrls: ['./add-note.component.scss']
@@ -10,8 +13,8 @@ export class AddNoteComponent implements OnInit {
   public Categories: DTOCategory[] = [];
   public NoteValue: string = "";
   public Category: number = 0;
-  public Base64String: string | undefined;
-  public FileType: string | undefined;
+  public FileValue: string = "";
+  public FileType: string = "";
 
   constructor(private httpService: HttpClient) {
   }
@@ -27,15 +30,16 @@ export class AddNoteComponent implements OnInit {
 
 
   }
-
-
   SubmitForm() {
-    console.log(this.Base64String);
-    this.httpService.post('http://localhost:5039/api/Note/addnote', {
-      Title: this.Title,
-      NoteValue: this.NoteValue,
-      Category: this.Category
-    }, {responseType: 'text'}).subscribe((data) => {
+
+    let requestedNote: NoteSend = {
+      title: this.Title,
+      category: this.Category.toString(),
+      noteValue: this.NoteValue,
+      fileValue: this.FileValue,
+      fileType: this.FileType
+    };
+    this.httpService.post('http://localhost:5039/api/Note/addnote', requestedNote ,{responseType:"text"}).subscribe((data) => {
       if (data) {
       }
     }, error => {
@@ -55,31 +59,50 @@ export class AddNoteComponent implements OnInit {
 
 
   encodeImageFileAsURL() {
-    if(document){
-    // @ts-ignore
+    if (document) {
+      // @ts-ignore
       let filesSelected = document.getElementById("inputFileToLoad").files;
-    if (filesSelected.length > 0) {
-      let fileToLoad = filesSelected[0];
-      this.FileType = fileToLoad.type;
-      let fileReader = new FileReader();
-
-      fileReader.onload = function (fileLoadedEvent) {
-        // @ts-ignore
-        let srcData = fileLoadedEvent.target.result; // <--- data: base64
-
-        let newImage = document.createElement('img');
-        if (typeof srcData === "string") {
-          newImage.src = srcData;
+      if (filesSelected.length > 0) {
+        let fileToLoad = filesSelected[0];
+        this.FileType = fileToLoad.type;
+        let fileReader = new FileReader();
+        fileReader.onload = () => {
+          let json = JSON.stringify({dataURL: fileReader.result});
+          let base64 = JSON.parse(json).dataURL;
+          let newImage = document.createElement('img');
+          newImage.src = base64;
+          // @ts-ignore
+          document.getElementById("imgTest").innerHTML = newImage.outerHTML;
+          // @ts-ignore
+          this.FileValue = base64
         }
-        // @ts-ignore
-        document.getElementById("imgTest").innerHTML = newImage.outerHTML;
-        // @ts-ignore
-        alert("Converted Base64 version is " + document.getElementById("imgTest").innerHTML);
-        // @ts-ignore
-        console.log("Converted Base64 version is " + document.getElementById("imgTest").innerHTML);
+        fileReader.readAsDataURL(fileToLoad);
+
       }
-      fileReader.readAsDataURL(fileToLoad);
     }
-    }
-    }
+  }
+
+  onUpload() {
+    // @ts-ignore
+    let filesSelected = document.getElementById("file-input").files;
+    let originalFile = filesSelected[0];
+    this.FileType = originalFile.type
+    let reader = new FileReader();
+    reader.readAsDataURL(originalFile);
+    reader.onload = () => {
+      let json = JSON.stringify({dataURL: reader.result});
+      // View the file
+      let base64 = JSON.parse(json).dataURL;
+      this.FileValue = base64;
+
+      // console.log(base64)
+    //   // @ts-ignore
+    //   document.getElementById("displaypdf").empty();
+    //   // @ts-ignore
+    //   document.getElementById("displaypdf").append(`<object data="${base64}"
+    //   type="application/pdf" width="400px" height="200px">
+    // </object>`);
+
+    };
+  }
 }

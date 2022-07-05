@@ -10,4 +10,6 @@ export interface NoteProfile {
   categoryID: number;
   noteValue: string | null;
   name: string | null;
+  fileValue: string | null;
+  fileType: string | null;
 }

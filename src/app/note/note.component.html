@@ -1,7 +1,15 @@
-<div class="container" *ngIf="note">
-  <h1 >{{ note.title }}</h1>
-  <p >{{ note.noteValue }}</p>
-    <p > Created At {{ date }}</p>
-    <p > Created By {{ note.name }}</p>
-  <app-add-rating [IDNote]="note.id"></app-add-rating>
+
+<div class="row">
+  <div class="column col-6">
+    <div class="container" *ngIf="note">
+      <h1 >{{ note.title }}</h1>
+      <p >{{ note.noteValue }}</p>
+      <p > Created At {{ date }}</p>
+      <p > Created By {{ note.name }}</p>
+      <app-add-rating [IDNote]="note.id"></app-add-rating>
+    </div>
+  </div>
+  <div class="column col-6" *ngIf="note && note.fileValue && note.fileType?.includes('image')">
+    <img [src]="note.fileValue" [alt]="note.fileType" height="100%" width="100%">
+  </div>
 </div>
