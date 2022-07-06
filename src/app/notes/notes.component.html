@@ -1,17 +1,41 @@
-<div class="full-notes" *ngIf="Notes&&Notes.length>0">
-  <input *ngIf="Notes&&Notes.length>0" type="search" id="form1" class="form-control" placeholder="Search Note" aria-label="Search" (keyup)="OnSearchTextChanged($event)" />
-  <div class="row"  *ngIf="Notes&&Notes.length>0">
-  <div class="column">
-    <table>
-      <tr>
-        <th>Title</th>
-        <th>Value</th>
-      </tr>
-      <tr *ngFor="let note of Notes | noteSearch:searchText" [routerLink]="['/note', note.id]" >
-        <td>{{note.title}}</td>
-        <td>{{note.noteValue}}</td>
-      </tr>
-    </table>
-  </div>
+<div class="row">
+<div class="col w-100">
+    <header class="header" *ngIf="showHidden" >Active Notes</header>
+    <input *ngIf="Notes&&Notes.length>0" type="search" id="form1" class="form-control" placeholder="Search Note" aria-label="Search" (keyup)="OnSearchTextChanged($event)" />
+    <div class="row" *ngIf="Notes&&Notes.length>0">
+      <div class="column w-100">
+        <table>
+          <tr>
+            <th>Title</th>
+            <th>Value</th>
+          </tr>
+          <tr *ngFor="let note of Notes | noteSearch:searchText" [routerLink]="['/note', note.id]" >
+            <td>{{note.title}}</td>
+            <td>{{note.noteValue}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+</div>
+<div class="col-6" *ngIf="showHidden">
+  <header class="header" >Inactive Notes</header>
+  <input *ngIf="HiddenNotes&&HiddenNotes.length>0" type="search" id="form2" class="form-control" placeholder="Search Note" aria-label="Search" (keyup)="OnSearchTextChangedHidden($event)" />
+    <div class="row"  *ngIf="HiddenNotes&&HiddenNotes.length>0">
+      <div class="column w-100">
+        <table>
+          <tr>
+            <th>Title</th>
+            <th>Value</th>
+          </tr>
+          <tr *ngFor="let note of HiddenNotes | noteSearch:searchTextHidden" >
+            <td>{{note.title}}</td>
+            <td>{{note.noteValue}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
 </div>
 </div>
+
+
+

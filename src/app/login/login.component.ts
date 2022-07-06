@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
+import {LoginModel} from "../../models/LoginModel";
 
 @Component({
   selector: 'app-login',
@@ -10,26 +11,26 @@ import {Router} from "@angular/router";
 export class LoginComponent {
   name: string = "";
   password: string = "";
-
   constructor(private httpService: HttpClient, private router: Router) {
 
   }
 
 
-
   onClickButton() {
     sessionStorage.clear();
-    this.httpService.post('http://localhost:5039/api/Auth/Login',
+    this.httpService.post<LoginModel>('http://localhost:5039/api/Auth/Login',
       {
         username: this.name,
         password: this.password
       },
-      { responseType: 'text' }
+      { responseType: 'json' }
     ).subscribe((data) => {
       if (data) {
-        sessionStorage.setItem('token', data);
-        sessionStorage.setItem('userName',this.name);
+        sessionStorage.setItem("token",data.token);
+        sessionStorage.setItem("userName",data.userName);
+        sessionStorage.setItem("userID",data.userID);
         this.directToPage();
+
       }
     }, error => {
       console.error(error)

@@ -83,7 +83,7 @@ export class AddNoteComponent implements OnInit {
 
   onUpload() {
     // @ts-ignore
-    let filesSelected = document.getElementById("file-input").files;
+    let filesSelected = document.getElementById("custom-file-input").files;
     let originalFile = filesSelected[0];
     this.FileType = originalFile.type
     let reader = new FileReader();

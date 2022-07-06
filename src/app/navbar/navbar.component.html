@@ -27,10 +27,10 @@
 <!--      </li>-->
     </ul>
   </div>
-  <div class="name">
-    <a>{{userName}}</a>
+  <div class="name nav-item">
+    <tr [routerLink]="['/user', userID]" >{{userName}} </tr>
   </div>
-  <div class="nav-logout">
+  <div class="nav-logout nav-item">
     <a class="nav-link" href="#" (click)="LogoutEvent()" >Log out</a>
   </div>
 </nav>

@@ -11,6 +11,7 @@ import {NoteComponent} from "./note/note.component";
 import {AuthGuard} from "./auth.guard";
 import {LoginPageComponent} from "./layouts/login-page/login-page.component";
 import {HomePageComponent} from "./layouts/home-page/home-page.component";
+import {UserComponent} from "./user/user.component";
 
 const routes: Routes = [
   {path: '', component: LoginPageComponent,
@@ -27,6 +28,7 @@ const routes: Routes = [
       { path: 'notes', component: NotesComponent,canActivate: [AuthGuard] },
       { path: 'addrating', component: AddRatingComponent, canActivate: [AuthGuard] },
       { path: 'note/:id', component: NoteComponent , canActivate: [AuthGuard]},
+      { path: 'user/:id', component: UserComponent , canActivate: [AuthGuard]},
       ]}];
 
 @NgModule({

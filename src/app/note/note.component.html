@@ -15,3 +15,9 @@
     <ngx-extended-pdf-viewer [base64Src]="this.note.fileValue" [useBrowserLocale]=true></ngx-extended-pdf-viewer>
   </div>
 </div>
+<div class="row">
+  <div class="col-md-6 col-sm-4 button">
+  <button *ngIf="note.createdBy.toString()==currentUserID" (click)="inactivateNote()"> INACTIVATE BUTTON</button>
+
+  </div>
+</div>

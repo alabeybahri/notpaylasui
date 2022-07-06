@@ -11,6 +11,8 @@ import {NoteProfile} from "../../models/NoteProfile";
 export class NoteComponent implements OnInit {
   public note = {} as NoteProfile;
   public date: string = "";
+  // @ts-ignore
+  public currentUserID: string = sessionStorage.getItem("userID");
 
   constructor(private route: ActivatedRoute, private httpService: HttpClient) {
   }
@@ -19,22 +21,8 @@ export class NoteComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.getNoteByID(params['id']);
     });
-  }
-
-  public createPDF(){
-    // let pdf_newTab = window.open("");
-    // if (typeof this.note.fileValue === "string") {
-    //   pdf_newTab?.document.write(
-    //     "<iframe width='100%' height='100%' src='data:application/pdf;base64, " +
-    //     encodeURI(this.note.fileValue) + "'></iframe>"
-    //   )
-    // }
-    // const linkSource = "data:application/pdf;base64," + this.note.fileValue;
-    // const downloadLink = document.createElement("a");
-    // const fileName = "sample.pdf"
-    // downloadLink.href = linkSource;
-    // downloadLink.download = fileName;
-
+    // @ts-ignore
+    this.currentUserID = sessionStorage.getItem("userID");
   }
 
 
@@ -47,7 +35,6 @@ export class NoteComponent implements OnInit {
             this.removeSeconds();
             // @ts-ignore
             this.note.fileValue = this.note.fileValue?.replace("data:application/pdf;base64,","");
-            this.createPDF();
           }
         }, error => {
           console.log(error)
@@ -58,6 +45,11 @@ export class NoteComponent implements OnInit {
 
   public removeSeconds() {
     this.date = this.note.createdAt.replace(/T/, " ").replace(/:\b(\d)+.\b(\d)+$/, "");
+  }
+
+  inactivateNote() {
+    let ID = this.note.id;
+    this.httpService.delete('http://localhost:5039/api/Note/inactiveByID?ID=' + ID).subscribe();
   }
 }
 
