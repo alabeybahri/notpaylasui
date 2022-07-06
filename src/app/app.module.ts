@@ -20,6 +20,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import {AuthGuard} from "./auth.guard";
 import { LoginPageComponent } from './layouts/login-page/login-page.component';
 import { HomePageComponent } from './layouts/home-page/home-page.component';
+import {NgxExtendedPdfViewerModule} from "ngx-extended-pdf-viewer";
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   declarations: [
@@ -37,14 +39,16 @@ import { HomePageComponent } from './layouts/home-page/home-page.component';
     NavbarComponent,
     LoginPageComponent,
     HomePageComponent,
+    UserComponent,
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule,
-    FormsModule,
-    StarRatingModule.forRoot(),
-  ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        AppRoutingModule,
+        FormsModule,
+        StarRatingModule.forRoot(),
+        NgxExtendedPdfViewerModule,
+    ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

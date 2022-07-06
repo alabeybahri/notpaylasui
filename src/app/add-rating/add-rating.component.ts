@@ -6,7 +6,6 @@ import {RatingChangeEvent} from "angular-star-rating";
   selector: 'app-add-rating', templateUrl: './add-rating.component.html', styleUrls: ['./add-rating.component.scss']
 })
 export class AddRatingComponent implements OnInit {
-  public Rating: number = 0;
   public NoteID: number = 0;
   public DBRating: number = 0;
   public DBRatingAverage: number = 0;

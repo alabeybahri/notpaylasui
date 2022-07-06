@@ -4,7 +4,6 @@ import {DTOCategory} from "../../models/DTOCategory";
 import {NoteSend} from "../../models/NoteSend";
 
 
-
 @Component({
   selector: 'app-add-note', templateUrl: './add-note.component.html', styleUrls: ['./add-note.component.scss']
 })
@@ -91,18 +90,7 @@ export class AddNoteComponent implements OnInit {
     reader.readAsDataURL(originalFile);
     reader.onload = () => {
       let json = JSON.stringify({dataURL: reader.result});
-      // View the file
-      let base64 = JSON.parse(json).dataURL;
-      this.FileValue = base64;
-
-      // console.log(base64)
-    //   // @ts-ignore
-    //   document.getElementById("displaypdf").empty();
-    //   // @ts-ignore
-    //   document.getElementById("displaypdf").append(`<object data="${base64}"
-    //   type="application/pdf" width="400px" height="200px">
-    // </object>`);
-
+      this.FileValue = JSON.parse(json).dataURL;
     };
   }
 }
