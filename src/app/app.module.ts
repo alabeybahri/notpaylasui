@@ -22,6 +22,8 @@ import { LoginPageComponent } from './layouts/login-page/login-page.component';
 import { HomePageComponent } from './layouts/home-page/home-page.component';
 import {NgxExtendedPdfViewerModule} from "ngx-extended-pdf-viewer";
 import { UserComponent } from './user/user.component';
+import { ActiveNotePipe } from './active-note.pipe';
+
 
 @NgModule({
   declarations: [
@@ -40,15 +42,16 @@ import { UserComponent } from './user/user.component';
     LoginPageComponent,
     HomePageComponent,
     UserComponent,
+    ActiveNotePipe,
   ],
-    imports: [
-        BrowserModule,
-        HttpClientModule,
-        AppRoutingModule,
-        FormsModule,
-        StarRatingModule.forRoot(),
-        NgxExtendedPdfViewerModule,
-    ],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    AppRoutingModule,
+    FormsModule,
+    StarRatingModule.forRoot(),
+    NgxExtendedPdfViewerModule,
+  ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

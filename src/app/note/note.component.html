@@ -11,13 +11,22 @@
   <div class="col-sm-4 col-md-6 py-3" *ngIf="note && note.fileValue && note.fileType?.includes('image')">
     <img [src]="note.fileValue" [alt]="note.fileType" height="100%" width="100%">
   </div>
-  <div class="col-sm-4 col-md-6 py-3 pdf-show" *ngIf="note && note.fileValue && note.fileType?.includes('application')">
-    <ngx-extended-pdf-viewer [base64Src]="this.note.fileValue" [useBrowserLocale]=true></ngx-extended-pdf-viewer>
+  <div class="col-sm-4 col-md-6 py-3 pdf-show" *ngIf="note && note.fileValue && note.fileType?.includes('pdf')">
+    <ngx-extended-pdf-viewer [base64Src]="this.Base64PDF" [useBrowserLocale]=true></ngx-extended-pdf-viewer>
   </div>
 </div>
 <div class="row">
   <div class="col-md-6 col-sm-4 button">
-  <button *ngIf="note.createdBy.toString()==currentUserID" (click)="inactivateNote()"> INACTIVATE BUTTON</button>
-
+  <button *ngIf="note.createdBy==currentUserID" (click)="inactivateNote()"> INACTIVATE BUTTON</button>
   </div>
 </div>
+
+<a *ngIf="this.HrefDOCX" class="face-button" (click)="createDOCX()">
+  <div class="face-primary">
+    <span class="icon fa fa-cloud"></span>
+    Download
+  </div>
+  <div class="face-secondary">
+    <span class="icon fa fa-hdd-o"></span>
+  </div>
+</a>

@@ -3,7 +3,7 @@
   <star-rating [starType]="'svg'" [rating]="DBRating" (ratingChange)="OnRatingChange($event)"></star-rating>
 </div>
   <div *ngIf="DBRatingAverage>0">
-    Average Rating = ({{DBRatingAverage}}/5)
+    Average Rating = ({{DBRatingAverage.toFixed(2)}}/5)
   </div>
 </div>
 

@@ -91,6 +91,7 @@ export class AddNoteComponent implements OnInit {
     reader.onload = () => {
       let json = JSON.stringify({dataURL: reader.result});
       this.FileValue = JSON.parse(json).dataURL;
+      console.log(this.FileValue);
     };
   }
 }

@@ -9,25 +9,7 @@
             <th>Title</th>
             <th>Value</th>
           </tr>
-          <tr *ngFor="let note of Notes | noteSearch:searchText" [routerLink]="['/note', note.id]" >
-            <td>{{note.title}}</td>
-            <td>{{note.noteValue}}</td>
-          </tr>
-        </table>
-      </div>
-    </div>
-</div>
-<div class="col-6" *ngIf="showHidden">
-  <header class="header" >Inactive Notes</header>
-  <input *ngIf="HiddenNotes&&HiddenNotes.length>0" type="search" id="form2" class="form-control" placeholder="Search Note" aria-label="Search" (keyup)="OnSearchTextChangedHidden($event)" />
-    <div class="row"  *ngIf="HiddenNotes&&HiddenNotes.length>0">
-      <div class="column w-100">
-        <table>
-          <tr>
-            <th>Title</th>
-            <th>Value</th>
-          </tr>
-          <tr *ngFor="let note of HiddenNotes | noteSearch:searchTextHidden" >
+          <tr *ngFor="let note of Notes | noteSearch:searchText | activeNote:search" [routerLink]="['/note', note.id]"  >
             <td>{{note.title}}</td>
             <td>{{note.noteValue}}</td>
           </tr>

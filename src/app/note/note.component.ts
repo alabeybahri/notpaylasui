@@ -11,11 +11,15 @@ import {NoteProfile} from "../../models/NoteProfile";
 export class NoteComponent implements OnInit {
   public note = {} as NoteProfile;
   public date: string = "";
+  public Base64PDF: string = "";
+  public HrefDOCX: string = "";
   // @ts-ignore
-  public currentUserID: string = sessionStorage.getItem("userID");
+  public currentUserID: number = parseInt(sessionStorage.getItem("userID"));
 
-  constructor(private route: ActivatedRoute, private httpService: HttpClient) {
+  constructor( private route: ActivatedRoute, private httpService: HttpClient) {
   }
+
+
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -23,6 +27,17 @@ export class NoteComponent implements OnInit {
     });
     // @ts-ignore
     this.currentUserID = sessionStorage.getItem("userID");
+  }
+
+  public createDOCX(){
+    const linkSource = this.note.fileValue;
+    const downloadLink = document.createElement("a");
+    const fileName = "sample.docx"
+    if (typeof linkSource === "string") {
+      downloadLink.href = linkSource;
+    }
+    downloadLink.download = fileName;
+    downloadLink.click();
   }
 
 
@@ -33,8 +48,7 @@ export class NoteComponent implements OnInit {
           if (data) {
             this.note = data;
             this.removeSeconds();
-            // @ts-ignore
-            this.note.fileValue = this.note.fileValue?.replace("data:application/pdf;base64,","");
+            this.trimFileValue();
           }
         }, error => {
           console.log(error)
@@ -42,6 +56,15 @@ export class NoteComponent implements OnInit {
     }
   }
 
+  trimFileValue(){
+    if(this.note.fileValue?.includes("data:application/octet-stream;base64,")){
+      this.HrefDOCX = this.note.fileValue?.replace("data:application/octet-stream;base64,","");
+    }
+    if(this.note.fileValue?.includes("data:application/pdf;base64,")){
+      // @ts-ignore
+      this.Base64PDF = this.note.fileValue?.replace("data:application/pdf;base64,","");
+    }
+  }
 
   public removeSeconds() {
     this.date = this.note.createdAt.replace(/T/, " ").replace(/:\b(\d)+.\b(\d)+$/, "");

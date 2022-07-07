@@ -11,7 +11,7 @@ export class NotesComponent implements OnInit {
   public _categoryID: string = "";
   public _userID: string = "";
   public searchText: string = "";
-  public searchTextHidden: string = "";
+  public search: boolean = true;
   public showHidden: boolean = false;
   constructor(private httpService: HttpClient) {
   }
@@ -54,27 +54,11 @@ export class NotesComponent implements OnInit {
         });
     }
   }
-  public getNotesByCreatorIDHidden(creatorID: string) {
-    this.showHidden = true;
-    if (creatorID) {
-      this.httpService.get<DTONote[]>('http://localhost:5039/api/Note/bycreatorIDHidden?creatorID=' + creatorID)
-        .subscribe((data) => {
-          if (data) {
-            this.HiddenNotes = data;
-          }
-        }, error => {
-          console.log(error)
-        });
-    }
-  }
 
   OnSearchTextChanged($event: any) {
     this.searchText = $event.target.value;
   }
 
-  OnSearchTextChangedHidden($event: any) {
-    this.searchTextHidden = $event.target.value;
-  }
 
 
   private getNotesByUserID(userID: string) {
@@ -86,7 +70,6 @@ export class NotesComponent implements OnInit {
       }, error => {
         console.log(error)
       });
-      this.getNotesByCreatorIDHidden(userID);
     }
   }
 
