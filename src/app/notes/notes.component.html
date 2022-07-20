@@ -1,6 +1,5 @@
 <div class="row">
 <div class="col w-100">
-    <header class="header" *ngIf="showHidden" >Active Notes</header>
     <input *ngIf="Notes&&Notes.length>0" type="search" id="form1" class="form-control" placeholder="Search Note" aria-label="Search" (keyup)="OnSearchTextChanged($event)" />
     <div class="row" *ngIf="Notes&&Notes.length>0">
       <div class="column w-100">
@@ -9,7 +8,7 @@
             <th>Title</th>
             <th>Value</th>
           </tr>
-          <tr *ngFor="let note of Notes | noteSearch:searchText | activeNote:search" [routerLink]="['/note', note.id]"  >
+          <tr *ngFor="let note of Notes | noteSearch:searchText" [routerLink]="['/note', note.id]"  >
             <td>{{note.title}}</td>
             <td>{{note.noteValue}}</td>
           </tr>

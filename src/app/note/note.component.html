@@ -1,11 +1,44 @@
 <div class="row">
   <div class="col-sm-4 col-md-6 py-3">
-    <div class="container" *ngIf="note">
-      <h1 >{{ note.title }}</h1>
-      <p >{{ note.noteValue }}</p>
-      <p > Created At {{ date }}</p>
-      <p > Created By {{ note.name }}</p>
-      <app-add-rating [IDNote]="note.id"></app-add-rating>
+    <div class="container left " *ngIf="note">
+      <div  class="note-title"><h1>{{ note.title }}</h1></div>
+      <br>
+      <pre>{{ note.noteValue }}</pre>
+      <br>
+      <div class="name-date-delete" >
+        <div class="rating"><app-add-rating [IDNote]="note.id"></app-add-rating></div>
+        <h5 class="name-date">  <br> </h5>
+        <div class="button-delete">
+          <h5 class="face-button" >
+            <div class="face-primary">
+              {{date}}
+            </div>
+            <div class="face-secondary">
+              {{ note.name }}
+            </div>
+          </h5>
+        </div>
+        <div class="button-delete">
+        <a class="face-button"  *ngIf="note.createdBy==currentUserID" (click)="deleteNote()">
+          <div class="face-primary">
+            Delete
+          </div>
+          <div class="face-secondary">
+            <span class="icon fa fa-trash"></span>
+          </div>
+        </a>
+        </div>
+        <div>
+        <a *ngIf="this.HrefDOCX" class="face-button" (click)="createDOCX()">
+          <div class="face-primary">
+            Download
+          </div>
+          <div class="face-secondary">
+            <span class="icon fa fa-cloud"></span>
+          </div>
+        </a>
+        </div>
+      </div>
     </div>
   </div>
   <div class="col-sm-4 col-md-6 py-3" *ngIf="note && note.fileValue && note.fileType?.includes('image')">
@@ -15,18 +48,5 @@
     <ngx-extended-pdf-viewer [base64Src]="this.Base64PDF" [useBrowserLocale]=true></ngx-extended-pdf-viewer>
   </div>
 </div>
-<div class="row">
-  <div class="col-md-6 col-sm-4 button">
-  <button *ngIf="note.createdBy==currentUserID" (click)="inactivateNote()"> INACTIVATE BUTTON</button>
-  </div>
-</div>
 
-<a *ngIf="this.HrefDOCX" class="face-button" (click)="createDOCX()">
-  <div class="face-primary">
-    <span class="icon fa fa-cloud"></span>
-    Download
-  </div>
-  <div class="face-secondary">
-    <span class="icon fa fa-hdd-o"></span>
-  </div>
-</a>
+

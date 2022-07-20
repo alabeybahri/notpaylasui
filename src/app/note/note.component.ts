@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {NoteProfile} from "../../models/NoteProfile";
+import {NotificationService} from "../notification.service";
 
 @Component({
   selector: 'app-note',
@@ -16,7 +17,7 @@ export class NoteComponent implements OnInit {
   // @ts-ignore
   public currentUserID: number = parseInt(sessionStorage.getItem("userID"));
 
-  constructor( private route: ActivatedRoute, private httpService: HttpClient) {
+  constructor(private notify: NotificationService, private route: ActivatedRoute, private httpService: HttpClient,private router:Router) {
   }
 
 
@@ -70,10 +71,16 @@ export class NoteComponent implements OnInit {
     this.date = this.note.createdAt.replace(/T/, " ").replace(/:\b(\d)+.\b(\d)+$/, "");
   }
 
-  inactivateNote() {
-    let ID = this.note.id;
-    this.httpService.delete('http://localhost:5039/api/Note/inactiveByID?ID=' + ID).subscribe();
-  }
+  deleteNote() {
+    if(confirm("Note will be deleted")){
+      let ID = this.note.id;
+      this.httpService.delete('http://localhost:5039/api/Note/ByID?ID=' + ID).subscribe();
+      this.notify.showSuccess({title:"Success", message:"Note Deleted"})
+      this.router.navigateByUrl("/page").then();
+    }
+
+    }
+
 }
 
 

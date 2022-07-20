@@ -22,8 +22,8 @@ import { LoginPageComponent } from './layouts/login-page/login-page.component';
 import { HomePageComponent } from './layouts/home-page/home-page.component';
 import {NgxExtendedPdfViewerModule} from "ngx-extended-pdf-viewer";
 import { UserComponent } from './user/user.component';
-import { ActiveNotePipe } from './active-note.pipe';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -42,7 +42,6 @@ import { ActiveNotePipe } from './active-note.pipe';
     LoginPageComponent,
     HomePageComponent,
     UserComponent,
-    ActiveNotePipe,
   ],
   imports: [
     BrowserModule,
@@ -51,6 +50,8 @@ import { ActiveNotePipe } from './active-note.pipe';
     FormsModule,
     StarRatingModule.forRoot(),
     NgxExtendedPdfViewerModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [
     {

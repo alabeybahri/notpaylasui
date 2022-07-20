@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {DTOCategory} from "../../models/DTOCategory";
 import {NoteSend} from "../../models/NoteSend";
+import {NotificationService} from "../notification.service";
 
 
 @Component({
@@ -15,13 +16,15 @@ export class AddNoteComponent implements OnInit {
   public FileValue: string = "";
   public FileType: string = "";
 
-  constructor(private httpService: HttpClient) {
+  constructor(private notify: NotificationService,private httpService: HttpClient) {
   }
 
   ngOnInit(): void {
     this.httpService.get<DTOCategory[]>('http://localhost:5039/api/Category/all').subscribe((data) => {
       if (data) {
         this.Categories = data;
+      }
+      else{
       }
     }, error => {
       console.log(error)
@@ -30,23 +33,29 @@ export class AddNoteComponent implements OnInit {
 
   }
   SubmitForm() {
-
-    let requestedNote: NoteSend = {
-      title: this.Title,
-      category: this.Category.toString(),
-      noteValue: this.NoteValue,
-      fileValue: this.FileValue,
-      fileType: this.FileType
-    };
-    this.httpService.post('http://localhost:5039/api/Note/addnote', requestedNote ,{responseType:"text"}).subscribe((data) => {
-      if (data) {
-      }
-    }, error => {
-      console.error(error)
-    }, () => {
-    });
-
-
+    if(this.checkForm()){
+      let requestedNote: NoteSend = {
+        title: this.Title.trim(),
+        category: this.Category.toString(),
+        noteValue: this.NoteValue.trim(),
+        fileValue: this.FileValue,
+        fileType: this.FileType
+      };
+      this.httpService.post('http://localhost:5039/api/Note/addnote', requestedNote ,{responseType:"text"}).subscribe((data) => {
+        if (data=="true") {
+          this.notify.showSuccess({message:"Note created successfully", title:"Success"})
+        }
+        else{
+          this.notify.showError({message:"Select a category", title:"Error"})
+        }
+      }, error => {
+        console.error(error)
+      }, () => {
+      });
+    }
+    else{
+      this.notify.showError({message:"Title and Description needed", title:"Error"})
+    }
   }
 
   public OnCategoryChange($event: any) {
@@ -56,6 +65,9 @@ export class AddNoteComponent implements OnInit {
     }
   }
 
+  public checkForm() : boolean{
+    return !!(this.NoteValue && this.Title && this.NoteValue.trim() && this.Title.trim());
+  }
 
   encodeImageFileAsURL() {
     if (document) {

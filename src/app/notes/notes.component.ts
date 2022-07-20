@@ -7,12 +7,10 @@ import {DTONote} from "../../models/DTONote";
 })
 export class NotesComponent implements OnInit {
   public Notes: DTONote[] = [];
-  public HiddenNotes: DTONote[] = [];
   public _categoryID: string = "";
   public _userID: string = "";
   public searchText: string = "";
   public search: boolean = true;
-  public showHidden: boolean = false;
   constructor(private httpService: HttpClient) {
   }
 
@@ -42,7 +40,6 @@ export class NotesComponent implements OnInit {
   ngOnInit(): void {
   }
   public getNotesByCategoryID(categoryID: string) {
-    this.showHidden = false;
     if (categoryID) {
       this.httpService.get<DTONote[]>('http://localhost:5039/api/Note/bycategoryID?categoryID=' + categoryID)
         .subscribe((data) => {
