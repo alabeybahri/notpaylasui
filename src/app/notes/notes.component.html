@@ -1,16 +1,16 @@
 <div class="row">
-<div class="col w-100 table-div">
-    <input *ngIf="Notes&&Notes.length>0" type="search" id="form1" class="form-control" placeholder="Search Note" aria-label="Search" (keyup)="OnSearchTextChanged($event)" />
+<div class="col table-div m-3 mt-0 mb-0" style="padding-right: 0">
+    <input *ngIf="Notes&&Notes.length>0" style="padding-right: 0; height: 6vh" type="search" id="form1" class="form-control" placeholder="Search Note" aria-label="Search" (keyup)="OnSearchTextChanged($event)" />
     <div class="row" *ngIf="Notes&&Notes.length>0">
-      <div class="column w-100 ">
-        <table>
-          <tr>
+      <div class="column w-auto">
+        <table style="background-color: beige">
+          <tr style="min-width: 100px">
             <th>Title</th>
             <th>Value</th>
           </tr>
-          <tr id="note-title-value" *ngFor="let note of Notes | noteSearch:searchText" [routerLink]="['/note', note.id]"  >
-            <td id="note-title">{{note.title}}</td>
-            <td id="note-value">{{note.noteValue}}</td>
+          <tr *ngFor="let note of Notes | noteSearch:searchText" [routerLink]="['/note', note.id]"  style="background-color: lightblue;">
+            <td >{{note.title}}</td>
+            <td >{{note.noteValue}}</td>
           </tr>
         </table>
       </div>

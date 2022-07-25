@@ -1,16 +1,16 @@
-<div class="row">
-  <div class="col-md-2 ">
+<div class="row" style="background-color: aliceblue">
+  <div class="col-md-3 m-3 mt-0">
     <div class="accordion w-100 ">
       <div id="accordion-items">
       <div class="container">
         <div class="form-outline">
-          <input type="search" id="form1" class="form-control" placeholder="Search Category" aria-label="Search"
+          <input style="height: 6vh; padding: 6px 0 6px 12px" type="search" id="form1" class="form-control" placeholder="Search Category" aria-label="Search"
                  (keyup)="OnSearchTextChanged($event)"/>
         </div>
       </div>
 
       <div class="accordion-item" *ngFor="let category of Categories | categorySearch:SearchTextValue"
-           (click)="OnAccordionItemClick(category.id,category.description)">
+           (click)="OnAccordionItemClick(category.id,category.description)" style="background-color: lightsteelblue">
         <p class="text" id="categories" [title]="category.description">{{category.name}}</p>
       </div>
       </div>
@@ -20,11 +20,6 @@
     <div class="note-container w-100" >
       <app-notes [CategoryID]="SelectedCategoryID"></app-notes>
     </div>
-  </div>
-  <div class="col-md-2">
-    <pre>
-      {{SelectedCategoryDescription}}
-    </pre>
   </div>
 </div>
 
