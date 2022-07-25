@@ -1,16 +1,16 @@
 <div class="row">
-<div class="col w-100">
+<div class="col w-100 table-div">
     <input *ngIf="Notes&&Notes.length>0" type="search" id="form1" class="form-control" placeholder="Search Note" aria-label="Search" (keyup)="OnSearchTextChanged($event)" />
     <div class="row" *ngIf="Notes&&Notes.length>0">
-      <div class="column w-100">
+      <div class="column w-100 ">
         <table>
           <tr>
             <th>Title</th>
             <th>Value</th>
           </tr>
-          <tr *ngFor="let note of Notes | noteSearch:searchText" [routerLink]="['/note', note.id]"  >
-            <td>{{note.title}}</td>
-            <td>{{note.noteValue}}</td>
+          <tr id="note-title-value" *ngFor="let note of Notes | noteSearch:searchText" [routerLink]="['/note', note.id]"  >
+            <td id="note-title">{{note.title}}</td>
+            <td id="note-value">{{note.noteValue}}</td>
           </tr>
         </table>
       </div>

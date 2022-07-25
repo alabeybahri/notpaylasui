@@ -48,6 +48,7 @@ body {
   column-gap: 24px;
   row-gap: 32px;
   align-items: center;
+  overflow-x: auto;
 }
 
 .hidden-box {
@@ -82,4 +83,13 @@ body {
 /* Add a background color on hover */
 .btn-group button:hover {
   background-color: #3e8e41;
+}
+
+#categories{
+  color: blue;
+}
+
+#accordion-items{
+  max-height: 720px;
+  overflow-y: auto;
 }

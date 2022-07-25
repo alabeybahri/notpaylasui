@@ -1,29 +1,39 @@
-<head>
-  <title>
-    AddCategory Page
-  </title>
-</head>
-<body>
-<br>
-<br>
-<form>
+<!--<form>-->
+<!--  <label> Name: </label>-->
+<!--  <input required [(ngModel)]="Name" [ngModelOptions]="{standalone: true}" type="text" name="Name" size="15"/> <br>-->
+<!--  <br>-->
+<!--  <br>-->
+<!--  Description-->
+<!--  <br>-->
+<!--  <textarea [(ngModel)]="Description" [ngModelOptions]="{standalone: true}" rows="8" cols="50"></textarea>-->
+<!--  <br> <br>-->
+<!--  <br> <br>-->
+<!--  <br> <br>-->
 
-  <label> Name: </label>
-  <input required [(ngModel)]="Name" [ngModelOptions]="{standalone: true}" type="text" name="Name" size="15"/> <br>
+<!--</form>-->
+<!--<input required (click)="SubmitForm()" type="submit" value="Submit">-->
 
-
-  <br>
-  <br>
-
-  Description
-  <br>
-  <textarea [(ngModel)]="Description" [ngModelOptions]="{standalone: true}" rows="8" cols="50"></textarea>
-
-  <br> <br>
-  <br> <br>
-  <br> <br>
-
-</form>
-<input required (click)="SubmitForm()" type="submit" value="Submit">
-
-</body>
+<div class="row" style="margin-top: 40px">
+  <div class="col-md-4">
+    <h1> Name </h1>
+    <br>
+    <input required [(ngModel)]="Name" [ngModelOptions]="{standalone: true}" type="text" name="Name" size="50"/>
+  </div>
+  <div class="col-md-8">
+    <h1> Description </h1>
+    <br>
+      <textarea [(ngModel)]="Description" [ngModelOptions]="{standalone: true}" rows="4" cols="24"></textarea>
+  </div>
+</div>
+<div class="row">
+  <div class="col" >
+    <span class="face-button submit col-md-6 " (click)="SubmitForm()" style="float: right">
+        <span class="face-primary">
+          Submit
+        </span>
+        <span class="face-secondary">
+          <span class="icon fa fa-paper-plane"></span>
+        </span>
+      </span>
+  </div>
+</div>

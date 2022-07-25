@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-4" >
+  <div class="col-md-4">
     <div class="left">
     <h1> Title</h1>
     <br>
@@ -16,7 +16,7 @@
     </select>
     <br>
     <br>
-      <label for="custom-file-input" class="col-md-12" >
+      <label for="custom-file-input" class="col-md-12">
         <span class="face-button">
         <span class="face-primary">Add File</span>
         <span class="face-secondary">
@@ -24,14 +24,14 @@
           <span class="icon fa fa-file-pdf-o"></span>
           <span class="icon fa fa-file-word-o"></span>
         </span>
-    </span>
         <input id="custom-file-input" type="file" value="Upload File" (change)="onUpload()" style="display: none;"/>
+    </span>
       </label>
     <br>
     <br>
     </div>
   </div>
-  <div class="col-md-8">
+  <div class="col-md-8" style="background-color: aliceblue;">
     <h1>Note</h1>
     <br>
     <textarea class="col-md-6" [(ngModel)]="NoteValue" [ngModelOptions]="{standalone: true}" rows="24" ></textarea>
@@ -44,5 +44,4 @@
         </span>
       </span>
   </div>
-
 </div>

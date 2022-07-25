@@ -9,6 +9,7 @@ import {DTOCategory} from "../../models/DTOCategory";
 export class PageComponent implements OnInit {
   public Categories: DTOCategory[] = [];
   public SelectedCategoryID: string = "";
+  public SelectedCategoryDescription: string = "";
   public SearchTextValue: any;
 
   constructor(private httpService: HttpClient, private router: Router) {
@@ -26,19 +27,10 @@ export class PageComponent implements OnInit {
 
   }
 
-
-
-  directToAddNote() {
-    this.router.navigateByUrl("/addnote").then();
-  }
-
-  directToAddCategory() {
-    this.router.navigateByUrl("/addcategory").then();
-  }
-
-  public OnAccordionItemClick(categoryID: string) {
+  public OnAccordionItemClick(categoryID: string,categoryDescription:string) {
     if (categoryID) {
       this.SelectedCategoryID = categoryID;
+      this.SelectedCategoryDescription = categoryDescription;
     }
   }
 
