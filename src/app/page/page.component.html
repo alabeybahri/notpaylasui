@@ -10,8 +10,12 @@
       </div>
 
       <div class="accordion-item" *ngFor="let category of Categories | categorySearch:SearchTextValue"
-           (click)="OnAccordionItemClick(category.id,category.description)" style="background-color: lightsteelblue">
-        <p class="text" id="categories" [title]="category.description">{{category.name}}</p>
+           (click)="OnAccordionItemClick(category.id,category.description)" style="background-color: lightsteelblue; width: 100%">
+        <p class="text" id="categories" [title]="category.description">{{category.name}}
+        </p>
+        <div class="delete-button" *ngIf="category.userID==currentUserID">
+          <button class="fa fa-trash" style="float: right" (click)="deleteEmptyCategory($event,category.name)"></button>
+        </div>
       </div>
       </div>
     </div>

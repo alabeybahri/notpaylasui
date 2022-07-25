@@ -2,9 +2,9 @@
 <div class="col table-div m-3 mt-0 mb-0" style="padding-right: 0">
     <input *ngIf="Notes&&Notes.length>0" style="padding-right: 0; height: 6vh" type="search" id="form1" class="form-control" placeholder="Search Note" aria-label="Search" (keyup)="OnSearchTextChanged($event)" />
     <div class="row" *ngIf="Notes&&Notes.length>0">
-      <div class="column w-auto">
+      <div class="column w-auto" style="width: 100% !important;">
         <table style="background-color: beige">
-          <tr style="min-width: 100px">
+          <tr>
             <th>Title</th>
             <th>Value</th>
           </tr>

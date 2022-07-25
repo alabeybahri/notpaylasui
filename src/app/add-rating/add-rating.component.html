@@ -1,11 +1,9 @@
-<div class="rating-stars">
-<div class="rate" >
-  <star-rating [starType]="'svg'" [rating]="DBRating" (ratingChange)="OnRatingChange($event)"></star-rating>
+<div class="wrapper">
+  <span class="icon fa fa-remove left" *ngIf="DBRating>0" (click)="clearRating()" style="color: red"></span>
+<div class="rate right" >
+    <star-rating [starType]="'svg'" [rating]="DBRating" (ratingChange)="OnRatingChange($event)"></star-rating>
+</div>
   <div class="average" *ngIf="DBRatingAverage>0">
     Average {{DBRatingAverage.toFixed(1)}}/5.0
   </div>
 </div>
-
-</div>
-
-

@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {RatingChangeEvent} from "angular-star-rating";
+import {NotificationService} from "../notification.service";
 
 @Component({
   selector: 'app-add-rating', templateUrl: './add-rating.component.html', styleUrls: ['./add-rating.component.scss']
@@ -10,7 +11,7 @@ export class AddRatingComponent implements OnInit {
   public DBRating: number = 0;
   public DBRatingAverage: number = 0;
 
-  constructor(private httpService: HttpClient) {
+  constructor(private httpService: HttpClient,private notify :NotificationService) {
   }
 
   public get IDNote(): number {
@@ -59,5 +60,16 @@ export class AddRatingComponent implements OnInit {
     if ($event && $event.rating !== this.DBRating) {
       this.onSetNewRating($event.rating);
     }
+  }
+
+  clearRating() {
+    const UserID = sessionStorage.getItem("userID");
+    this.httpService.delete('http://localhost:5039/api/Rating/delete?NoteID=' + this.NoteID + '&UserID=' + UserID).subscribe((data => {
+      if(data){
+        this.DBRating = 0;
+        this.DBRatingAverage = 0;
+        this.getRatingFromDB();
+      }
+    }))
   }
 }
